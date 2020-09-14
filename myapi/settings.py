@@ -11,25 +11,19 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-#임포트 추가
 import os
-
-import dj_database_url
-
+import dj_database_url 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
-#시크릿키를 복사해놓은 다음에 이렇게 입력하여 복사해두었던것을 붙여넣기함
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','ug%icn-br92wy0bh-ku&z992v#j@+uzw_*f(-@8x##jpsgjow%'
-')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'ug%icn-br92wy0bh-ku&z992v#j@+uzw_*f(-@8x##jpsgjow%')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#디버그 옵션을 False로 바꾼다.
 DEBUG = False
 #*********모든 호스트에 허용
 ALLOWED_HOSTS = ['*']
@@ -57,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',#미들웨어 추가
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'myapi.urls'
@@ -90,10 +84,11 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-#데이터베이스 밑에
+
 db_from_env = dj_database_url.config(conn_max_age=500)
-#기본 디비를 수정해준다
-DATABASES['default'].update(db_from_env)
+DATABASE['default'].update(db_froom_env)
+
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
